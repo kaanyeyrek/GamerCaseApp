@@ -46,6 +46,7 @@ class HomeTableViewCell: UITableViewCell {
         self.id = model.id
     }
     func setImage(model: HomePresentation) {
+        // download url
         if let imageURL = model.background_image {
             gameImage.sd_imageIndicator = SDWebImageActivityIndicator.medium
             gameImage.sd_imageTransition = .fade
