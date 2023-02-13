@@ -9,7 +9,7 @@ import Foundation
 
 enum GameEndPoint: HTTPEndPoint {
     case fetchGames(size: Int, page: Int)
-    case searchGames(size: Int, query: String, page: Int)
+    case searchGames(size: Int, search: String, page: Int)
     
     var path: String {
         return Paths.games
@@ -21,11 +21,11 @@ enum GameEndPoint: HTTPEndPoint {
                     URLQueryItem(name: "page_size", value: String(size)),
                     URLQueryItem(name: "page", value: String(page)),
             ]
-        case .searchGames(let size, let query, let page):
+        case .searchGames(let size, let search, let page):
             return [URLQueryItem(name: "key", value: NetworkHelper.apiKey),
                     URLQueryItem(name: "page_size", value: String(size)),
                     URLQueryItem(name: "page", value: String(page)),
-                    URLQueryItem(name: "search", value: query)
+                    URLQueryItem(name: "search", value: search)
             ]
         }
     }

@@ -17,16 +17,19 @@ protocol HomeViewInterface: AnyObject {
     func setSearchController()
     func changeLoading(isLoad: Bool)
     func handleOutput(output: HomeViewModelOutput)
+    func navigate(route: HomeViewModelRoute)
 }
 
 final class HomeViewController: UIViewController {
 //MARK: - UI Injection Global
     private lazy var viewModel: HomeViewModelInterface = HomeViewModel(view: self)
     private var homePresentation = [HomePresentation]()
+    private var filteredPresentation = [filterPresentation]()
 //MARK: - UI Elements Global
     private var indicator: UIActivityIndicatorView = UIActivityIndicatorView()
     private let table = UITableView()
-    private let searchController = UISearchController()
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var timer: Timer?
 //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,16 +71,19 @@ extension HomeViewController: HomeViewInterface {
     func reloadTable() {
         table.reloadData()
     }
+    // search controller configure
     func setSearchController() {
-        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for the games"
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     // loading data status
     func changeLoading(isLoad: Bool) {
         isLoad ? indicator.startAnimating() : indicator.stopAnimating()
     }
+    // handle output viewModel
     func handleOutput(output: HomeViewModelOutput) {
         switch output {
         case .uploadPresentation(let games):
@@ -89,41 +95,98 @@ extension HomeViewController: HomeViewInterface {
             DispatchQueue.main.async {
                 self.showEmptyStateView(with: message, at: self.view)
             }
+        case .filteredPresentation(let filtered):
+            self.filteredPresentation = filtered
+            self.reloadTable()
         case .removeEmpty:
             self.removeEmptyStateView()
+        }
+    }
+    // navigate detail vc
+    func navigate(route: HomeViewModelRoute) {
+        switch route {
+        case .detail(let viewModel):
+        let vc = DetailBuilder.make(viewModel: viewModel)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
 //MARK: - UITableViewDataSource Methods
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRowsInSection
+        if searchController.isActive {
+            return filteredPresentation.count
+        } else {
+            return homePresentation.count
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReuseIdentifier.homeCell, for: indexPath) as? HomeTableViewCell else {
             return UITableViewCell()
         }
-        let model = homePresentation[indexPath.row]
-        cell.setImage(model: model)
-        cell.setGameLabel(model: model)
-        cell.setMetacriticLabel()
-        cell.setMetacriticCount(model: model)
-        cell.setGenres(model: model)
-        cell.setID(model: model)
+        // search query activeted for network
+        if searchController.isActive == true {
+            let model = filteredPresentation[indexPath.row]
+            cell.setGameLabelFilter(model: model)
+            cell.setGameImageFilter(model: model)
+            cell.setMetacriticLabel()
+            cell.setMetacriticCountFilter(model: model)
+            return cell
+        } else {
+        // default request for network
+            let model = homePresentation[indexPath.row]
+            cell.setImage(model: model)
+            cell.setGameLabel(model: model)
+            cell.setMetacriticLabel()
+            cell.setMetacriticCount(model: model)
+            cell.setGenres(model: model)
+            cell.setID(model: model)
+        }
         return cell
     }
 }
 //MARK: - UITableViewDelegate Methods
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRowAt(at: indexPath.row)
         table.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return .init(140)
+        return .init(160)
+    }
+    // Swipe from bottom to top for pagination support app
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let height = table.frame.height
+        let offset = table.contentOffset.y
+        let contentHeight = table.contentSize.height
+        viewModel.pagination(height: height, offset: offset, contentHeight: contentHeight)
+        table.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }
 //MARK: - UISearchBarDelegate Methods
 extension HomeViewController: UISearchBarDelegate {
+    // User search textdidChange
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.showEmptyStateView(with: "No game has been searched.", at: self.view)
+        viewModel.newSearch()
+            if searchText.isEmpty {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    searchBar.resignFirstResponder()
+                    self.indicator.stopAnimating()
+                }
+        }
+        indicator.startAnimating()
+        timer?.invalidate()
+        guard let query = searchBar.text, !query.isEmpty else { return }
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            self.viewModel.searchData(querys: query)
+            self.removeEmptyStateView()
+            }
+    }
+    // Search cancel button methods
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.fetchGames()
+        self.reloadTable()
     }
 }
+

@@ -9,7 +9,7 @@ import UIKit
 // Empty View
 class GCView: UIView {
     
-    let headerLabel = GCLabel(alignment: .center, name: Fonts.proDisplay, size: 20, setTextColor: .secondaryLabel)
+    let headerLabel = GCLabel(alignment: .center, name: Fonts.mediumProDisplay, size: 18, setTextColor: UIColor(hex: Color.black))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,9 +23,10 @@ class GCView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func configure() {
+        self.backgroundColor = UIColor(hex: Color.searchBackground)
         addSubview(headerLabel)
         headerLabel.numberOfLines = 0
-        headerLabel.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 100, height: 200))
-        headerLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -80).isActive = true
+        headerLabel.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 236, height: 41))
+        headerLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 40).isActive = true
     }
 }

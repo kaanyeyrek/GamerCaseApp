@@ -14,7 +14,7 @@ struct GameResult: Decodable, Equatable {
     let id: Int
     let name: String
     let background_image: String
-    let metacritic: Int
+    let metacritic: Int?
     let genres: [Genre]
 }
 struct Genre: Decodable, Equatable {

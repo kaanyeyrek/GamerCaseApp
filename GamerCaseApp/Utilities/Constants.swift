@@ -18,12 +18,13 @@ public enum Icon {
     static let placeHolder = "photo"
 }
 public enum Fonts {
-    static let proDisplay = "SFProDisplay-Bold"
-    static let proText = "SFProText-Regular"
-    static let sfProDisplay = "SFProDisplay-Medium"
+    static let boldProDisplay = "SFProDisplay-Bold"
+    static let regularProText = "SFProText-Regular"
+    static let mediumProDisplay = "SFProDisplay-Medium"
 }
 public enum Color {
     static let genre = "#8A8A8Fff"
     static let black = "000000ff"
     static let red = "#D80000ff"
+    static let searchBackground = "#E5E5E5ff"
 }

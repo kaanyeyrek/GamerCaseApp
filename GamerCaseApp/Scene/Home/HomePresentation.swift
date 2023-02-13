@@ -11,14 +11,30 @@ struct HomePresentation {
     let id: Int
     let title: String
     let background_image: String?
-    let metacritic: Int
+    var metacritic: Int
     let genreName: [String]
     
     init(model: GameResult) {
         self.id = model.id
         self.title = model.name
         self.background_image = model.background_image
-        self.metacritic = model.metacritic
+        self.metacritic = model.metacritic!
+        let genresArray = model.genres.map { $0.name }
+        self.genreName = genresArray
+    }
+}
+struct filterPresentation {
+    let id: Int
+    let title: String
+    let background_image: String?
+    var metacritic: Int?
+    let genreName: [String]
+    
+    init(model: GameResult) {
+        self.id = model.id
+        self.title = model.name
+        self.background_image = model.background_image
+        self.metacritic = model.metacritic ?? 0
         let genresArray = model.genres.map { $0.name }
         self.genreName = genresArray
     }

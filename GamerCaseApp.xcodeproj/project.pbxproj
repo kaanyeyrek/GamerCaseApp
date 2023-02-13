@@ -20,7 +20,10 @@
 		CE5AA95C299584CD00EFB4FA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA95B299584CD00EFB4FA /* HomeViewModel.swift */; };
 		CE5AA95E299584E200EFB4FA /* HomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA95D299584E200EFB4FA /* HomeContracts.swift */; };
 		CE5AA960299584FB00EFB4FA /* HomePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA95F299584FB00EFB4FA /* HomePresentation.swift */; };
-		CE5AA963299585A200EFB4FA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA962299585A200EFB4FA /* SearchViewController.swift */; };
+		CE60235D299AA44600EC6DE9 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60235C299AA44600EC6DE9 /* HomeDetailViewModel.swift */; };
+		CE60235F299AA45E00EC6DE9 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60235E299AA45E00EC6DE9 /* HomeDetailViewController.swift */; };
+		CE602361299AA46C00EC6DE9 /* HomeDetailContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE602360299AA46C00EC6DE9 /* HomeDetailContracts.swift */; };
+		CE602363299AA49500EC6DE9 /* DetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE602362299AA49500EC6DE9 /* DetailBuilder.swift */; };
 		CE7C3A8029955FCC00B9CEF3 /* HTTPEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C3A7F29955FCC00B9CEF3 /* HTTPEndPoint.swift */; };
 		CE7C3A82299560BA00B9CEF3 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C3A81299560BA00B9CEF3 /* NetworkHelper.swift */; };
 		CE7C3A842995613600B9CEF3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C3A832995613600B9CEF3 /* NetworkError.swift */; };
@@ -73,7 +76,10 @@
 		CE5AA95B299584CD00EFB4FA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE5AA95D299584E200EFB4FA /* HomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContracts.swift; sourceTree = "<group>"; };
 		CE5AA95F299584FB00EFB4FA /* HomePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentation.swift; sourceTree = "<group>"; };
-		CE5AA962299585A200EFB4FA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CE60235C299AA44600EC6DE9 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
+		CE60235E299AA45E00EC6DE9 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
+		CE602360299AA46C00EC6DE9 /* HomeDetailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailContracts.swift; sourceTree = "<group>"; };
+		CE602362299AA49500EC6DE9 /* DetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuilder.swift; sourceTree = "<group>"; };
 		CE7C3A7F29955FCC00B9CEF3 /* HTTPEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEndPoint.swift; sourceTree = "<group>"; };
 		CE7C3A81299560BA00B9CEF3 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		CE7C3A832995613600B9CEF3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -168,12 +174,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		CE5AA9612995858100EFB4FA /* SearchController */ = {
+		CE60235B299A86F600EC6DE9 /* HomeDetail */ = {
 			isa = PBXGroup;
 			children = (
-				CE5AA962299585A200EFB4FA /* SearchViewController.swift */,
+				CE60235E299AA45E00EC6DE9 /* HomeDetailViewController.swift */,
+				CE60235C299AA44600EC6DE9 /* HomeDetailViewModel.swift */,
+				CE602360299AA46C00EC6DE9 /* HomeDetailContracts.swift */,
+				CE602362299AA49500EC6DE9 /* DetailBuilder.swift */,
 			);
-			path = SearchController;
+			path = HomeDetail;
 			sourceTree = "<group>";
 		};
 		CE7C3A87299564CF00B9CEF3 /* GameService */ = {
@@ -277,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB2AD7229954EC5008F4E83 /* Home */,
+				CE60235B299A86F600EC6DE9 /* HomeDetail */,
 				CE7C3A8D2995693800B9CEF3 /* Favorites */,
 			);
 			path = Scene;
@@ -289,7 +299,6 @@
 				CE5AA95B299584CD00EFB4FA /* HomeViewModel.swift */,
 				CE5AA95D299584E200EFB4FA /* HomeContracts.swift */,
 				CE5AA95F299584FB00EFB4FA /* HomePresentation.swift */,
-				CE5AA9612995858100EFB4FA /* SearchController */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -508,6 +517,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE602363299AA49500EC6DE9 /* DetailBuilder.swift in Sources */,
+				CE602361299AA46C00EC6DE9 /* HomeDetailContracts.swift in Sources */,
 				CE5AA95E299584E200EFB4FA /* HomeContracts.swift in Sources */,
 				CE5AA95C299584CD00EFB4FA /* HomeViewModel.swift in Sources */,
 				CE5AA960299584FB00EFB4FA /* HomePresentation.swift in Sources */,
@@ -520,9 +531,9 @@
 				CE5AA95A2995800F00EFB4FA /* GameModel.swift in Sources */,
 				CE21428E2996741100E2E46D /* Extension.swift in Sources */,
 				CE21429A2996961D00E2E46D /* HomeTableViewCell.swift in Sources */,
+				CE60235F299AA45E00EC6DE9 /* HomeDetailViewController.swift in Sources */,
 				CE7C3A8C2995691E00B9CEF3 /* TabBarViewController.swift in Sources */,
 				CE2142972996934000E2E46D /* GCView.swift in Sources */,
-				CE5AA963299585A200EFB4FA /* SearchViewController.swift in Sources */,
 				CEB2AD7C299552FE008F4E83 /* Paths.swift in Sources */,
 				CEB2AD7E2995541D008F4E83 /* HTTPMethod.swift in Sources */,
 				CEB2AD3D29954DEF008F4E83 /* AppDelegate.swift in Sources */,
@@ -532,6 +543,7 @@
 				CE7C3A8029955FCC00B9CEF3 /* HTTPEndPoint.swift in Sources */,
 				CE5AA9582995766A00EFB4FA /* GameService.swift in Sources */,
 				CE7C3A9129956ABF00B9CEF3 /* Constants.swift in Sources */,
+				CE60235D299AA44600EC6DE9 /* HomeDetailViewModel.swift in Sources */,
 				CEB2AD3F29954DEF008F4E83 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

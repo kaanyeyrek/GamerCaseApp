@@ -12,7 +12,10 @@ protocol HomeViewModelInterface {
     func viewDidLoad()
     func fetchGames()
     func changeLoadingStatus()
-    var numberOfRowsInSection: Int { get }
+    func searchData(querys: String)
+    func pagination(height: CGFloat, offset: CGFloat, contentHeight: CGFloat)
+    func newSearch()
+    func didSelectRowAt(at index: Int)
 }
 
 final class HomeViewModel {
@@ -20,11 +23,13 @@ final class HomeViewModel {
     private weak var view: HomeViewInterface?
     private var service: GameServiceInterface
     private var model: [GameResult] = []
+    private var filteredModel: [GameResult] = []
 //MARK: - Global ViewModel Elements
     private var pageSize: Int = 10
-    private var page: Int = 1
+    private var currentPage: Int = 1
     private var isLoad: Bool = false
     private var moreGames: Bool = true
+    private var userQuery: String = ""
     
     // Inject interface and game service
     init(view: HomeViewInterface, service: GameServiceInterface = GameService(manager: CoreService())) {
@@ -55,10 +60,10 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.setLayout()
         fetchGames()
     }
-    // Fetching network
+    // Fetching default network
     func fetchGames() {
         changeLoadingStatus()
-        service.fetchGames(endpoint: .fetchGames(size: pageSize, page: page)) { [weak self] result in
+        service.fetchGames(endpoint: .fetchGames(size: pageSize, page: currentPage)) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.changeLoadingStatus()
@@ -72,6 +77,7 @@ extension HomeViewModel: HomeViewModelInterface {
             }
         }
     }
+    // update home game data
     private func updateData(with games: GameModel) {
         if games.results.count <= 0 {
             moreGames = false
@@ -86,8 +92,60 @@ extension HomeViewModel: HomeViewModelInterface {
             notify(output: .removeEmpty)
         }
     }
-    var numberOfRowsInSection: Int {
-        model.count
+    // Search filter query games
+    func searchData(querys: String) {
+        changeLoadingStatus()
+        userQuery = querys
+        service.searchGames(endpoint: .searchGames(size: pageSize, search: userQuery, page: currentPage)) { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.changeLoadingStatus()
+                switch result {
+                case .success(let games):
+                    self.updateSearchResults(models: games)
+                case .failure(let error):
+                    self.notify(output: .failedUpdateData(message: "Failed search", title: error.rawValue))
+                }
+            }
+        }
     }
-    
+    //Update query search results
+    func updateSearchResults(models: GameModel) {
+        if models.results.count <= 0 {
+            self.moreGames = false
+        } else {
+            self.moreGames = true
+        }
+        self.filteredModel.insert(contentsOf: models.results, at: 0)
+        self.filteredModel = self.filteredModel.removeDuplicates()
+        let games = self.filteredModel.map { filterPresentation(model: $0) }
+        self.notify(output: .filteredPresentation(presentation: games))
+        if self.model.isEmpty {
+            notify(output: .empty(message: "No game has been searched."))
+        } else {
+            notify(output: .removeEmpty)
+        }
+    }
+    // Clear new search
+    func newSearch() {
+        userQuery = ""
+        filteredModel.removeAll()
+        currentPage = 1
+    }
+    // Swipe from bottom to top for pagination
+    func pagination(height: CGFloat, offset: CGFloat, contentHeight: CGFloat) {
+        if !filteredModel.isEmpty, !model.isEmpty {
+            if height + offset - 50 >= contentHeight {
+                if moreGames {
+                    currentPage += 1
+                    searchData(querys: userQuery)
+                }
+            }
+        }
+    }
+    // Show detail screen
+    func didSelectRowAt(at index: Int) {
+        let viewModel = HomeDetailViewModel(games: model[index])
+        view?.navigate(route: .detail(viewModel: viewModel))
+    }
 }
