@@ -8,12 +8,22 @@
 import Foundation
 
 enum GameEndPoint: HTTPEndPoint {
+    // Endpoint Case
     case fetchGames(size: Int, page: Int)
     case searchGames(size: Int, search: String, page: Int)
-    
+    case getDetail(id: Int)
+    // Network Path
     var path: String {
-        return Paths.games
+        switch self {
+            case .getDetail(let id):
+            return "/api/games/\(id)"
+        case .fetchGames:
+            return Paths.games
+        case .searchGames:
+            return Paths.games
+        }
     }
+    // Network URL Query
     var query: [URLQueryItem] {
         switch self {
         case .fetchGames(let size, let page):
@@ -26,6 +36,9 @@ enum GameEndPoint: HTTPEndPoint {
                     URLQueryItem(name: "page_size", value: String(size)),
                     URLQueryItem(name: "page", value: String(page)),
                     URLQueryItem(name: "search", value: search)
+            ]
+        case .getDetail(_):
+            return [URLQueryItem(name: "key", value: NetworkHelper.apiKey)
             ]
         }
     }

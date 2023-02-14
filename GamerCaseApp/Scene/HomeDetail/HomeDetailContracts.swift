@@ -8,7 +8,10 @@
 import Foundation
 
 enum HomeDetailOutput {
-    case loadPresentation(HomePresentation)
-    case showMore(url: String)
-    case isSaved(Bool)
+    case loadPresentation([HomeDetailPresentation])
+    case failedUpdateData(message: String, title: String)
+    case empty(message: String)
+    case removeEmpty
+//    case showMore(url: String)
+//    case isSaved(Bool)
 }

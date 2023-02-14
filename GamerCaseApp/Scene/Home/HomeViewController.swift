@@ -159,8 +159,10 @@ extension HomeViewController: UITableViewDelegate {
         let height = table.frame.height
         let offset = table.contentOffset.y
         let contentHeight = table.contentSize.height
-        viewModel.pagination(height: height, offset: offset, contentHeight: contentHeight)
-        table.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        if searchController.isActive {
+            viewModel.pagination(height: height, offset: offset, contentHeight: contentHeight)
+            table.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
     }
 }
 //MARK: - UISearchBarDelegate Methods

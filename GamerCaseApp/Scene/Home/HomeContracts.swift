@@ -15,5 +15,5 @@ enum HomeViewModelOutput {
     case removeEmpty
 }
 enum HomeViewModelRoute {
-    case detail(viewModel: HomeDetailViewModelImterface)
+    case detail(viewModel: HomeDetailViewModelInterface)
 }

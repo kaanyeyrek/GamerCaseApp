@@ -10,23 +10,30 @@ import Foundation
 protocol GameServiceInterface {
     func fetchGames(endpoint: GameEndPoint, completion: @escaping (Result<GameModel, NetworkError>) -> Void)
     func searchGames(endpoint: GameEndPoint, completion: @escaping (Result<GameModel, NetworkError>) -> Void)
+    func getDetails(endpoint: GameEndPoint, completion: @escaping (Result<GameDetailModel, NetworkError>) -> Void)
 }
-
+// Game Service Request
 final class GameService: GameServiceInterface {
     private var manager: CoreServiceProtocol!
     // Inject
     init(manager: CoreServiceProtocol!) {
         self.manager = manager
     }
-    // Fetch Games
+    // Default Games
     func fetchGames(endpoint: GameEndPoint, completion: @escaping (Result<GameModel, NetworkError>) -> Void) {
         manager.fetch(endPoint: endpoint) { (result: Result<GameModel, NetworkError>) in
             completion(result)
         }
     }
-    // Search
+    // User Search Query
     func searchGames(endpoint: GameEndPoint, completion: @escaping (Result<GameModel, NetworkError>) -> Void) {
         manager.fetch(endPoint: endpoint) { (result: Result<GameModel, NetworkError>) in
+            completion(result)
+        }
+    }
+    // Get user selected detail
+    func getDetails(endpoint: GameEndPoint, completion: @escaping (Result<GameDetailModel, NetworkError>) -> Void) {
+        manager.fetch(endPoint: endpoint) { (result: Result<GameDetailModel, NetworkError>) in
             completion(result)
         }
     }

@@ -6,9 +6,9 @@
 //
 
 import Foundation
-// helper builder
+// helper builder navigate detail vc 
 final class DetailBuilder {
-    static func make(viewModel: HomeDetailViewModelImterface) -> HomeDetailViewController {
+    static func make(viewModel: HomeDetailViewModelInterface) -> HomeDetailViewController {
         let vc = HomeDetailViewController(viewModel: viewModel)
         return vc
     }

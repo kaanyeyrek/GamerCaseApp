@@ -70,7 +70,6 @@ extension HomeViewModel: HomeViewModelInterface {
                 switch result {
                 case .success(let games):
                     self.updateData(with: games)
-                    print(games)
                 case .failure(let error):
                     self.notify(output: .failedUpdateData(message: error.rawValue, title: "Failed fetch data"))
                 }
@@ -145,7 +144,7 @@ extension HomeViewModel: HomeViewModelInterface {
     }
     // Show detail screen
     func didSelectRowAt(at index: Int) {
-        let viewModel = HomeDetailViewModel(games: model[index])
+        let viewModel = HomeDetailViewModel(selectedID: model[index].id)
         view?.navigate(route: .detail(viewModel: viewModel))
     }
 }
