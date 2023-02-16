@@ -17,19 +17,19 @@ protocol HomeDetailViewInterface: AnyObject {
     func changeLoading(isLoad: Bool)
     func setTableView()
     func reloadTable()
+    func showWebsite(url: String)
 }
 
+@available(iOS 13.0, *)
 final class HomeDetailViewController: UIViewController {
 //MARK: - Injections
     private var viewModel: HomeDetailViewModelInterface!
 //MARK: - Global UI Elements
     private let table = UITableView()
-    private let detailImage = GCImageView()
-    private let gameLabel = GCLabel(alignment: .right, name: Fonts.boldProDisplay, size: 36, setTextColor: UIColor(hex: Color.white))
     private var indicator: UIActivityIndicatorView = UIActivityIndicatorView()
 //MARK: - UI Components
     private var detailPresentation = [HomeDetailPresentation]()
-    
+
     init(viewModel: HomeDetailViewModelInterface!) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
@@ -45,9 +45,10 @@ final class HomeDetailViewController: UIViewController {
     }
 }
 //MARK: - HomeDetailInterface Methods
+@available(iOS 13.0, *)
 extension HomeDetailViewController: HomeDetailViewInterface {
     func setUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(hex: Color.searchBackground)
     }
     func changeLoading(isLoad: Bool) {
         isLoad ? indicator.startAnimating() : indicator.stopAnimating()
@@ -66,12 +67,13 @@ extension HomeDetailViewController: HomeDetailViewInterface {
         }
     }
     func setSubviews() {
-        [detailImage, indicator, gameLabel, table].forEach { elements in
+        [indicator, table].forEach { elements in
             view.addSubview(elements)
         }
     }
     func setLayout() {
-        table.fillSuperView()
+        table.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.frame.size.width, height: view.frame.size.height))
+        table.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -25).isActive = true
         indicator.startAnimating()
         indicator.centerInSuperView(size: .init(width: 250, height: 250))
     }
@@ -82,11 +84,23 @@ extension HomeDetailViewController: HomeDetailViewInterface {
         table.keyboardDismissMode = .interactive
         table.showsVerticalScrollIndicator = false
         table.separatorStyle = .none
+        table.allowsSelectionDuringEditing = true
     }
     func reloadTable() {
         table.reloadData()
     }
+    func showWebsite(url: String) {
+        guard let url = URL(string: url) else { return }
+
+        let configuration = SFSafariViewController.Configuration()
+        configuration.entersReaderIfAvailable = true
+
+        let vc = SFSafariViewController(url: url, configuration: configuration)
+        vc.preferredControlTintColor = .label
+        present(vc, animated: true)
+    }
 }
+@available(iOS 13.0, *)
 //MARK: - UITableViewDataSource Methods
 extension HomeDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,12 +111,21 @@ extension HomeDetailViewController: UITableViewDataSource {
         let model = detailPresentation[indexPath.row]
         cell.setDetailImageConfig(model: model)
         cell.setGameLabelConfig(model: model)
-        cell.configureCell(model: model)
+        cell.setDescriptionHeader()
+        cell.setDetailDescription(model: model)
         return cell
     }
 }
 //MARK: - UITableViewDelegate Methods
+@available(iOS 13.0, *)
 extension HomeDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tap")
+        tableView.deselectRow(at: indexPath, animated: true)
+            let model = detailPresentation[indexPath.row]
+            let url = model.reddit_url
+            self.showWebsite(url: url)
+}
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return .init(100)
     }

@@ -20,6 +20,7 @@ protocol HomeViewInterface: AnyObject {
     func navigate(route: HomeViewModelRoute)
 }
 
+@available(iOS 13.0, *)
 final class HomeViewController: UIViewController {
 //MARK: - UI Injection Global
     private lazy var viewModel: HomeViewModelInterface = HomeViewModel(view: self)
@@ -41,9 +42,10 @@ final class HomeViewController: UIViewController {
     }
 }
 //MARK: - HomeViewInterface Methods
+@available(iOS 13.0, *)
 extension HomeViewController: HomeViewInterface {
     func setUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(hex: Color.white)
     }
     func setNavBarTitleFeatures() {
         navigationItem.largeTitleDisplayMode = .always
@@ -112,6 +114,7 @@ extension HomeViewController: HomeViewInterface {
     }
 }
 //MARK: - UITableViewDataSource Methods
+@available(iOS 13.0, *)
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive {
@@ -146,6 +149,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 //MARK: - UITableViewDelegate Methods
+@available(iOS 13.0, *)
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRowAt(at: indexPath.row)
@@ -166,6 +170,7 @@ extension HomeViewController: UITableViewDelegate {
     }
 }
 //MARK: - UISearchBarDelegate Methods
+@available(iOS 13.0, *)
 extension HomeViewController: UISearchBarDelegate {
     // User search textdidChange
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

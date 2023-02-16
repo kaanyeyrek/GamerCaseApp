@@ -21,9 +21,9 @@
 		CE5AA95E299584E200EFB4FA /* HomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA95D299584E200EFB4FA /* HomeContracts.swift */; };
 		CE5AA960299584FB00EFB4FA /* HomePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA95F299584FB00EFB4FA /* HomePresentation.swift */; };
 		CE60235D299AA44600EC6DE9 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60235C299AA44600EC6DE9 /* HomeDetailViewModel.swift */; };
-		CE60235F299AA45E00EC6DE9 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60235E299AA45E00EC6DE9 /* HomeDetailViewController.swift */; };
 		CE602361299AA46C00EC6DE9 /* HomeDetailContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE602360299AA46C00EC6DE9 /* HomeDetailContracts.swift */; };
 		CE602363299AA49500EC6DE9 /* DetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE602362299AA49500EC6DE9 /* DetailBuilder.swift */; };
+		CE79BDC1299D3F5400B92A97 /* GCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79BDC0299D3F5400B92A97 /* GCButton.swift */; };
 		CE7C3A8029955FCC00B9CEF3 /* HTTPEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C3A7F29955FCC00B9CEF3 /* HTTPEndPoint.swift */; };
 		CE7C3A82299560BA00B9CEF3 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C3A81299560BA00B9CEF3 /* NetworkHelper.swift */; };
 		CE7C3A842995613600B9CEF3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C3A832995613600B9CEF3 /* NetworkError.swift */; };
@@ -47,6 +47,7 @@
 		CEB2AD7C299552FE008F4E83 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AD7B299552FE008F4E83 /* Paths.swift */; };
 		CEB2AD7E2995541D008F4E83 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AD7D2995541D008F4E83 /* HTTPMethod.swift */; };
 		CECB3F982997C0BC00E274B8 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CECB3F972997C0BC00E274B8 /* SFProDisplay-Medium.ttf */; };
+		CEDA9A2E299E48810004034B /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA9A2D299E48810004034B /* HomeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,9 +81,9 @@
 		CE5AA95D299584E200EFB4FA /* HomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContracts.swift; sourceTree = "<group>"; };
 		CE5AA95F299584FB00EFB4FA /* HomePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentation.swift; sourceTree = "<group>"; };
 		CE60235C299AA44600EC6DE9 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
-		CE60235E299AA45E00EC6DE9 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		CE602360299AA46C00EC6DE9 /* HomeDetailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailContracts.swift; sourceTree = "<group>"; };
 		CE602362299AA49500EC6DE9 /* DetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuilder.swift; sourceTree = "<group>"; };
+		CE79BDC0299D3F5400B92A97 /* GCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCButton.swift; sourceTree = "<group>"; };
 		CE7C3A7F29955FCC00B9CEF3 /* HTTPEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEndPoint.swift; sourceTree = "<group>"; };
 		CE7C3A81299560BA00B9CEF3 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		CE7C3A832995613600B9CEF3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		CEB2AD7B299552FE008F4E83 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 		CEB2AD7D2995541D008F4E83 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		CECB3F972997C0BC00E274B8 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		CEDA9A2D299E48810004034B /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,13 +186,21 @@
 		CE60235B299A86F600EC6DE9 /* HomeDetail */ = {
 			isa = PBXGroup;
 			children = (
-				CE60235E299AA45E00EC6DE9 /* HomeDetailViewController.swift */,
+				CEDA9A2D299E48810004034B /* HomeDetailViewController.swift */,
 				CE60235C299AA44600EC6DE9 /* HomeDetailViewModel.swift */,
 				CE602360299AA46C00EC6DE9 /* HomeDetailContracts.swift */,
 				CE9856A9299BDD7000C0D2BA /* HomeDetailPresentation.swift */,
 				CE602362299AA49500EC6DE9 /* DetailBuilder.swift */,
 			);
 			path = HomeDetail;
+			sourceTree = "<group>";
+		};
+		CE79BDBF299D3F3900B92A97 /* GCButton */ = {
+			isa = PBXGroup;
+			children = (
+				CE79BDC0299D3F5400B92A97 /* GCButton.swift */,
+			);
+			path = GCButton;
 			sourceTree = "<group>";
 		};
 		CE7C3A87299564CF00B9CEF3 /* GameService */ = {
@@ -327,6 +337,7 @@
 				CE2142952996913500E2E46D /* GCView */,
 				CE21429229968FE100E2E46D /* GCLabel */,
 				CE21428F2996829B00E2E46D /* GCImageView */,
+				CE79BDBF299D3F3900B92A97 /* GCButton */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -541,11 +552,12 @@
 				CE21428E2996741100E2E46D /* Extension.swift in Sources */,
 				CE9856AA299BDD7000C0D2BA /* HomeDetailPresentation.swift in Sources */,
 				CE21429A2996961D00E2E46D /* HomeTableViewCell.swift in Sources */,
-				CE60235F299AA45E00EC6DE9 /* HomeDetailViewController.swift in Sources */,
+				CE79BDC1299D3F5400B92A97 /* GCButton.swift in Sources */,
 				CE7C3A8C2995691E00B9CEF3 /* TabBarViewController.swift in Sources */,
 				CE9856A8299BB3DF00C0D2BA /* GameDetailModel.swift in Sources */,
 				CE2142972996934000E2E46D /* GCView.swift in Sources */,
 				CEB2AD7C299552FE008F4E83 /* Paths.swift in Sources */,
+				CEDA9A2E299E48810004034B /* HomeDetailViewController.swift in Sources */,
 				CEB2AD7E2995541D008F4E83 /* HTTPMethod.swift in Sources */,
 				CEB2AD3D29954DEF008F4E83 /* AppDelegate.swift in Sources */,
 				CEB2AD4729954DEF008F4E83 /* GamerCaseApp.xcdatamodeld in Sources */,
@@ -733,6 +745,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,6 +774,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

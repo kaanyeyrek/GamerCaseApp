@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 
+@available(iOS 13.0, *)
 class HomeTableViewCell: UITableViewCell {
     //MARK: - Cell Elements
     private let gameImage = GCImageView()
@@ -34,7 +35,7 @@ class HomeTableViewCell: UITableViewCell {
         gameImage.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 16, left: 16, bottom: 16, right: 0), size: .init(width: 120, height: 104))
         gameImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
-        gameLabel.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 16, left: 150, bottom: 95, right: 10), size: .init(width: 207, height: 50))
+        gameLabel.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 16, left: 150, bottom: 110, right: 10), size: .init(width: 207, height: 50))
         
         metacriticLabel.anchor(top: gameLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 150, bottom: 40, right: 0), size: .init(width: 71, height: 16))
         
