@@ -81,7 +81,7 @@ extension HomeDetailViewModel: HomeDetailViewModelInterface {
         }
     }
     // Check Helper
-    private func checkSaveInfo() -> Bool {
-        let savedGames = 
-    }
+//    private func checkSaveInfo() -> Bool {
+//       
+//    }
 }
