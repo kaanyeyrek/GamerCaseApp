@@ -26,8 +26,9 @@ final class HomeDetailViewModel {
 //MARK: - UI Components
     // inject detail service
     private var service: GameServiceInterface
-    // model
+    // model detail
     var games: GameDetailModel?
+    // saved core data for favorited
     private var gameResult: GameResult
     // init
     init(selectedID: Int, models: GameResult, service: GameServiceInterface = GameService(manager: CoreService())) {

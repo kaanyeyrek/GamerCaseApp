@@ -26,7 +26,7 @@ class GCView: UIView {
         self.backgroundColor = UIColor(hex: Color.searchBackground)
         addSubview(headerLabel)
         headerLabel.numberOfLines = 0
-        headerLabel.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 236, height: 41))
-        headerLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 40).isActive = true
+        headerLabel.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 236, height: 41))
+        headerLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -250).isActive = true
     }
 }

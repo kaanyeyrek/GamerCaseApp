@@ -39,10 +39,11 @@ class HomeTableViewCell: UITableViewCell {
         
         metacriticLabel.anchor(top: gameLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 150, bottom: 40, right: 0), size: .init(width: 71, height: 16))
         
-        metacriticCount.anchor(top: gameLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 223, bottom: 40, right: 0), size: .init(width: 26, height: 20))
+        metacriticCount.anchor(top: gameLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 220, bottom: 39, right: 0), size: .init(width: 26, height: 20))
         
         genreLabel.anchor(top: metacriticLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 150, bottom: 15, right: 0), size: .init(width: 207, height: 16))
     }
+//MARK: - Games home vc configure cell
     // based components
     func setID(model: HomePresentation) {
         self.id = model.id

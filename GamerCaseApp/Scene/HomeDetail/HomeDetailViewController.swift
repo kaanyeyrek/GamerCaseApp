@@ -41,7 +41,7 @@ final class HomeDetailViewController: UIViewController {
     private let visitWebsiteButton = GCButton(title: "Visit website", setTitleColors: UIColor(hex: Color.detailColor), fontName: Fonts.regularProText, fontSize: 17)
     private let seperator3stView = UIView()
     private let readMoreButton = GCButton(title: "Read More", setTitleColors: .systemBlue, fontName: Fonts.regularProText, fontSize: 10)
-    private let barButton = UIButton(type: .system)
+    private let barButton = GCButton(title: nil, setTitleColors: UIColor(hex: Color.navBarFavColor), fontName: Fonts.regularProText, fontSize: 17)
 // init
     init(viewModel: HomeDetailViewModelInterface) {
         self.viewModel = viewModel
@@ -95,6 +95,7 @@ extension HomeDetailViewController: HomeDetailViewInterface {
     func changeLoading(isLoad: Bool) {
         isLoad ? indicator.startAnimating() : indicator.stopAnimating()
     }
+    // handle viewModel output
     func handleOutput(output: HomeDetailOutput) {
         switch output {
         case .failedUpdateData(let message, let title):
@@ -103,24 +104,29 @@ extension HomeDetailViewController: HomeDetailViewInterface {
             barButton.isSelected = bool
         }
     }
+    // set subviews
     func setSubviews() {
         [indicator, gameImage, gradientView, gameLabel, gameHeaderDescription, gameDescription, seperator1stView, visitRedditButton, seperator2stView, visitWebsiteButton, seperator3stView, readMoreButton].forEach { elements in
             view.addSubview(elements)
         }
     }
+    // targets
     func setTargets() {
         visitRedditButton.addTarget(self, action: #selector(didTappedVisitRedditButton), for: .touchUpInside)
         visitWebsiteButton.addTarget(self, action: #selector(didTappedVisitWebsiteButton), for: .touchUpInside)
         readMoreButton.addTarget(self, action: #selector(didTappedReadMoreButton), for: .touchUpInside)
     }
+    // navBar
     func setBarButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: barButton)
-        barButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+        barButton.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
+        barButton.titleLabel?.textAlignment = .right
         barButton.setTitle("Favorite", for: .normal)
         barButton.setTitle("Favorited", for: .selected)
         barButton.addTarget(self, action: #selector(didTappedBarButtonItem), for: .touchUpInside)
         
     }
+    // layout
     func setLayout() {
         indicator.startAnimating()
         indicator.centerInSuperView(size: .init(width: 250, height: 250))
@@ -161,6 +167,7 @@ extension HomeDetailViewController: HomeDetailViewInterface {
         readMoreButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 72).isActive = true
     
     }
+    // features characters spacing, line spacing etc.
     func setTextFeatures() {
         gameLabel.addCharactersSpacing(spacing: 0.38, text: gameLabel.text!)
         gameLabel.numberOfLines = 2
@@ -174,7 +181,9 @@ extension HomeDetailViewController: HomeDetailViewInterface {
         visitRedditButton.titleLabel?.addCharactersSpacing(spacing: -0.41, text: (visitRedditButton.titleLabel?.text!)!)
         visitWebsiteButton.titleLabel?.addCharactersSpacing(spacing: -0.41, text: (visitWebsiteButton.titleLabel?.text!)!)
         readMoreButton.titleLabel?.addCharactersSpacing(spacing: -0.41, text: (readMoreButton.titleLabel?.text!)!)
+        barButton.titleLabel?.addCharactersSpacing(spacing: -0.41, text: (barButton.titleLabel?.text!)!)
     }
+    // show safari vc
     func showWebsite(url: String) {
         guard let url = URL(string: url) else { return }
 
@@ -185,6 +194,7 @@ extension HomeDetailViewController: HomeDetailViewInterface {
         vc.preferredControlTintColor = .label
         present(vc, animated: true)
     }
+    // gradient layer
     func setGradientLayer() {
         gradientLayer.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor,
                                 UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
@@ -193,6 +203,7 @@ extension HomeDetailViewController: HomeDetailViewInterface {
             gradientLayer.endPoint = CGPoint(x: 0.1, y: 0.0)
             gradientView.layer.insertSublayer(gradientLayer, at: 0)
     }
+    // configure ui attributes for detail model
     func configureUI() {
         guard let games = viewModel.games else { return }
         gameImage.sd_imageIndicator = SDWebImageActivityIndicator.medium

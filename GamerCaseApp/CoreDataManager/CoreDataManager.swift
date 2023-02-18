@@ -13,6 +13,7 @@ protocol CoreDataManagerInterface {
     func fetch() -> [Games]
     func delete(model: GameResult)
     func deleteAll()
+    func getItemCount() -> Int
 }
 //MARK: - CoreDataManagerInterface Methods
 @available(iOS 13.0, *)
@@ -27,6 +28,7 @@ final class CoreDataManager: CoreDataManagerInterface {
         let genresArray = model.genres.map {$0.name}
         games.genre = genresArray as NSObject
         games.metacritic = Int32(model.metacritic!)
+        games.id = String(model.id)
         do {
             try context.save()
         } catch {
@@ -68,4 +70,10 @@ final class CoreDataManager: CoreDataManagerInterface {
             print(error.localizedDescription)
         }
     }
+    func getItemCount() -> Int {
+            let context = self.context
+            let request: NSFetchRequest<Games> = Games.fetchRequest()
+            let count = try? context.count(for: request)
+            return count ?? 0
+        }
 }

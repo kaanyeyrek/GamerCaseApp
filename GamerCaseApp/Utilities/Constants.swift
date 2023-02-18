@@ -13,6 +13,7 @@ public enum Constants {
 }
 public enum ReuseIdentifier {
     static let homeCell = "HomeTableViewCell"
+    static let favoritesCell = "FavoritesTableViewCell"
 }
 public enum Icon {
     static let placeHolder = "photo"
@@ -29,4 +30,6 @@ public enum Color {
     static let searchBackground = "#E5E5E5ff"
     static let white = "#FFFFFFff"
     static let detailColor = "#313131ff"
+    static let favoritesColor = "#F8F8F8ff"
+    static let navBarFavColor = "#007AFFff"
 }
