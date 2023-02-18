@@ -82,6 +82,7 @@ final class HomeDetailViewController: UIViewController {
         }
     }
     @objc private func didTappedBarButtonItem() {
+        viewModel.saveTapped(isSelected: barButton.isSelected)
         barButton.isSelected.toggle()
     }
 }
@@ -98,6 +99,8 @@ extension HomeDetailViewController: HomeDetailViewInterface {
         switch output {
         case .failedUpdateData(let message, let title):
             print(message, title)
+        case .checkSave(let bool):
+            barButton.isSelected = bool
         }
     }
     func setSubviews() {
@@ -112,8 +115,9 @@ extension HomeDetailViewController: HomeDetailViewInterface {
     }
     func setBarButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: barButton)
-        barButton.setTitle("Favorited", for: .normal)
-        barButton.setTitle("Favorite", for: .selected)
+        barButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+        barButton.setTitle("Favorite", for: .normal)
+        barButton.setTitle("Favorited", for: .selected)
         barButton.addTarget(self, action: #selector(didTappedBarButtonItem), for: .touchUpInside)
         
     }

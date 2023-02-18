@@ -17,9 +17,8 @@ extension Games {
     }
 
     @NSManaged public var image: String?
-    @NSManaged public var descriptions: String?
-    @NSManaged public var visitRedditLink: String?
+    @NSManaged public var metacritic: Int32
     @NSManaged public var name: String?
-    @NSManaged public var visitWebsiteLink: String?
+    @NSManaged public var genre: NSObject?
 
 }

@@ -9,4 +9,5 @@ import Foundation
 
 enum HomeDetailOutput {
     case failedUpdateData(message: String, title: String)
+    case checkSave(Bool)
 }

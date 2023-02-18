@@ -13,5 +13,6 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = UIColor(hex: Color.searchBackground)
     }
 }

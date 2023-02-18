@@ -13,8 +13,8 @@ protocol HomeDetailViewModelInterface {
     func setData()
     func changeLoadStatus()
     func viewWillAppear()
-    func favoriteTapped(isSelected: Bool)
     var games: GameDetailModel? { get set }
+    func saveTapped(isSelected: Bool)
 }
 
 final class HomeDetailViewModel {
@@ -28,13 +28,16 @@ final class HomeDetailViewModel {
     private var service: GameServiceInterface
     // model
     var games: GameDetailModel?
+    private var gameResult: GameResult
     // init
-    init(selectedID: Int, service: GameServiceInterface = GameService(manager: CoreService())) {
+    init(selectedID: Int, models: GameResult, service: GameServiceInterface = GameService(manager: CoreService())) {
         self.service = service
         self.selectedID = selectedID
+        self.gameResult = models
     }
 }
 //MARK: - HomeDetailViewModel Interface
+@available(iOS 13.0, *)
 extension HomeDetailViewModel: HomeDetailViewModelInterface {
     //MARK: - LifeCycle
     func viewWillAppear() {
@@ -62,6 +65,7 @@ extension HomeDetailViewModel: HomeDetailViewModelInterface {
                 case .success(let games):
                     self.games = games
                     self.view?.configureUI()
+                    self.notify(output: .checkSave(self.checkSaveInfo()))
                 case .failure(let error):
                     self.notify(output: .failedUpdateData(message: error.rawValue, title: "Failed detail fetch"))
                 }
@@ -73,15 +77,23 @@ extension HomeDetailViewModel: HomeDetailViewModelInterface {
         isload = !isload
         view?.changeLoading(isLoad: isload)
     }
-    func favoriteTapped(isSelected: Bool) {
+    func saveTapped(isSelected: Bool) {
         if isSelected {
-            
+            CoreDataManager().delete(model: gameResult)
+            print("not save")
         } else {
-            
+            CoreDataManager().save(model: gameResult)
+            print("save")
         }
     }
-    // Check Helper
-//    private func checkSaveInfo() -> Bool {
-//       
-//    }
+    //Check Helper
+    private func checkSaveInfo() -> Bool {
+        let savedGames = CoreDataManager().fetch()
+        for savedGame in savedGames {
+            if savedGame.name == gameResult.name {
+                return true
+            }
+        }
+        return false
+    }
 }

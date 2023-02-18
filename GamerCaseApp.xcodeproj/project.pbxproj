@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE01D67229A10B09000D2BA8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D67129A10B09000D2BA8 /* CoreDataManager.swift */; };
-		CE01D67B29A10DEC000D2BA8 /* Games+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D67929A10DEC000D2BA8 /* Games+CoreDataClass.swift */; };
-		CE01D67C29A10DEC000D2BA8 /* Games+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D67A29A10DEC000D2BA8 /* Games+CoreDataProperties.swift */; };
+		CE01D68329A11511000D2BA8 /* Games+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68129A11511000D2BA8 /* Games+CoreDataClass.swift */; };
+		CE01D68429A11511000D2BA8 /* Games+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68229A11511000D2BA8 /* Games+CoreDataProperties.swift */; };
 		CE21428E2996741100E2E46D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21428D2996741100E2E46D /* Extension.swift */; };
 		CE21429129968F6700E2E46D /* GCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21429029968F6700E2E46D /* GCImageView.swift */; };
 		CE21429429968FF600E2E46D /* GCLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21429329968FF600E2E46D /* GCLabel.swift */; };
@@ -70,8 +70,8 @@
 
 /* Begin PBXFileReference section */
 		CE01D67129A10B09000D2BA8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		CE01D67929A10DEC000D2BA8 /* Games+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Games+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CE01D67A29A10DEC000D2BA8 /* Games+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Games+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE01D68129A11511000D2BA8 /* Games+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Games+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE01D68229A11511000D2BA8 /* Games+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Games+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CE21428D2996741100E2E46D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CE21429029968F6700E2E46D /* GCImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCImageView.swift; sourceTree = "<group>"; };
 		CE21429329968FF600E2E46D /* GCLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCLabel.swift; sourceTree = "<group>"; };
@@ -354,10 +354,10 @@
 		CEB2AD7629954F05008F4E83 /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				CEB2AD4529954DEF008F4E83 /* GamerCaseApp.xcdatamodeld */,
 				CE01D67129A10B09000D2BA8 /* CoreDataManager.swift */,
-				CE01D67A29A10DEC000D2BA8 /* Games+CoreDataProperties.swift */,
-				CE01D67929A10DEC000D2BA8 /* Games+CoreDataClass.swift */,
+				CEB2AD4529954DEF008F4E83 /* GamerCaseApp.xcdatamodeld */,
+				CE01D68229A11511000D2BA8 /* Games+CoreDataProperties.swift */,
+				CE01D68129A11511000D2BA8 /* Games+CoreDataClass.swift */,
 			);
 			path = CoreDataManager;
 			sourceTree = "<group>";
@@ -545,7 +545,7 @@
 				CE5AA95E299584E200EFB4FA /* HomeContracts.swift in Sources */,
 				CE5AA95C299584CD00EFB4FA /* HomeViewModel.swift in Sources */,
 				CE5AA960299584FB00EFB4FA /* HomePresentation.swift in Sources */,
-				CE01D67B29A10DEC000D2BA8 /* Games+CoreDataClass.swift in Sources */,
+				CE01D68329A11511000D2BA8 /* Games+CoreDataClass.swift in Sources */,
 				CE7C3A8F2995697100B9CEF3 /* FavoritesViewController.swift in Sources */,
 				CE7C3A892995674600B9CEF3 /* GameEndpoint.swift in Sources */,
 				CE7C3A82299560BA00B9CEF3 /* NetworkHelper.swift in Sources */,
@@ -569,7 +569,7 @@
 				CE7C3A842995613600B9CEF3 /* NetworkError.swift in Sources */,
 				CE7C3A8029955FCC00B9CEF3 /* HTTPEndPoint.swift in Sources */,
 				CE5AA9582995766A00EFB4FA /* GameService.swift in Sources */,
-				CE01D67C29A10DEC000D2BA8 /* Games+CoreDataProperties.swift in Sources */,
+				CE01D68429A11511000D2BA8 /* Games+CoreDataProperties.swift in Sources */,
 				CE7C3A9129956ABF00B9CEF3 /* Constants.swift in Sources */,
 				CE60235D299AA44600EC6DE9 /* HomeDetailViewModel.swift in Sources */,
 				CEB2AD3F29954DEF008F4E83 /* SceneDelegate.swift in Sources */,

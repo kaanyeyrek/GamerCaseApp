@@ -38,6 +38,7 @@ final class HomeViewModel {
     }
 }
 //MARK: - HomeViewModelInterface Methods
+@available(iOS 13.0, *)
 extension HomeViewModel: HomeViewModelInterface {
     // Helper
     private func notify(output: HomeViewModelOutput) {
@@ -144,7 +145,7 @@ extension HomeViewModel: HomeViewModelInterface {
     }
     // Show detail screen
     func didSelectRowAt(at index: Int) {
-        let viewModel = HomeDetailViewModel(selectedID: model[index].id)
+        let viewModel = HomeDetailViewModel(selectedID: model[index].id, models: model[index])
         view?.navigate(route: .detail(viewModel: viewModel))
     }
 }
