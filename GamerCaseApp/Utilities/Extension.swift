@@ -196,3 +196,15 @@ extension UILabel {
         self.attributedText = attributedString
     }
 }
+extension UILabel {
+    var optimalHeight: CGFloat {
+        get {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: CGFloat.greatestFiniteMagnitude))
+            label.text = self.text
+            label.font = self.font
+            label.sizeToFit()
+            label.lineBreakMode = .byWordWrapping
+            return label.frame.height
+        }
+    }
+}

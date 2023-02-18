@@ -13,8 +13,6 @@ public enum Constants {
 }
 public enum ReuseIdentifier {
     static let homeCell = "HomeTableViewCell"
-    static let detailsCell = "DetailsUITableViewCell"
-    static let detailsBottom = "DetailsBottomTableViewCell"
 }
 public enum Icon {
     static let placeHolder = "photo"

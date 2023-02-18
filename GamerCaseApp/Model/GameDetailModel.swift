@@ -8,10 +8,10 @@
 import Foundation
 
 struct GameDetailModel: Decodable, Equatable {
-    let background_image: String
-    let id: Int
-    let name_original: String
-    let description: String
-    let reddit_url: String
-    let website: String
+    let background_image: String?
+    let id: Int?
+    let name_original: String?
+    let description: String?
+    let reddit_url: String?
+    let website: String?
 }
