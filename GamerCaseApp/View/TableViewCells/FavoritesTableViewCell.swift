@@ -43,14 +43,14 @@ class FavoritesTableViewCell: UITableViewCell {
         genreLabel.anchor(top: metacriticLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 150, bottom: 20, right: 0), size: .init(width: 207, height: 16))
     }
 //MARK: - Favorites vc cell configure
-    func setFavoritesImage(presentation: FavoritesPresentation) {
-        if let imageURL = presentation.gameImage {
+    func setFavoritesImage(presentation: Games) {
+        if let imageURL = presentation.image {
             gameImage.sd_imageIndicator = SDWebImageActivityIndicator.medium
             gameImage.sd_imageTransition = .fade
             gameImage.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(systemName: Icon.placeHolder))
         }
     }
-    func setFavoritesGameLabel(presentation: FavoritesPresentation) {
+    func setFavoritesGameLabel(presentation: Games) {
         gameLabel.text = presentation.name
         gameLabel.addCharactersSpacing(spacing: 0.38, text: gameLabel.text!)
     }
@@ -58,12 +58,13 @@ class FavoritesTableViewCell: UITableViewCell {
         metacriticLabel.text = "metacritic:"
         metacriticLabel.addCharactersSpacing(spacing: 0.38, text: metacriticLabel.text!)
     }
-    func setMetacriticCount(presentation: FavoritesPresentation) {
-        metacriticCount.text = "\(presentation.metaCriticCount)"
+    func setMetacriticCount(presentation: Games) {
+        metacriticCount.text = "\(presentation.metacritic)"
         metacriticCount.addCharactersSpacing(spacing: 0.88, text: metacriticCount.text!)
     }
-    func setGenres(presentation: FavoritesPresentation) {
-        genreLabel.text = presentation.genres.joined(separator: ", ").lowercased().capitalizingFirstLetter()
+    func setGenres(presentation: Games) {
+        guard let genreArray = presentation.genre as? [String] else { return }
+        genreLabel.text = genreArray.joined(separator: ", ").lowercased().capitalizingFirstLetter()
         genreLabel.addCharactersSpacing(spacing: -0.08, text: genreLabel.text!)
     }
 }

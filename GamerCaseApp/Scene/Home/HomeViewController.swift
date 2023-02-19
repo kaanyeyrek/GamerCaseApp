@@ -154,6 +154,8 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRowAt(at: indexPath.row)
         table.deselectRow(at: indexPath, animated: true)
+        let cell = table.cellForRow(at: indexPath)
+        cell?.backgroundColor = UIColor(hex: Color.homeCellBackground)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return .init(160)

@@ -42,6 +42,7 @@ final class HomeDetailViewController: UIViewController {
     private let seperator3stView = UIView()
     private let readMoreButton = GCButton(title: "Read More", setTitleColors: .systemBlue, fontName: Fonts.regularProText, fontSize: 10)
     private let barButton = GCButton(title: nil, setTitleColors: UIColor(hex: Color.navBarFavColor), fontName: Fonts.regularProText, fontSize: 17)
+    private let containerView = UIView()
 // init
     init(viewModel: HomeDetailViewModelInterface) {
         self.viewModel = viewModel
@@ -76,9 +77,13 @@ final class HomeDetailViewController: UIViewController {
         if gameDescription.numberOfLines == 0 {
             gameDescription.numberOfLines = 4
             readMoreButton.setTitle("Read More", for: .normal)
+            gameDescription.sizeToFit()
+            gameDescription.lineBreakMode = .byTruncatingTail
         } else {
             readMoreButton.setTitle("Read Less", for: .normal)
             gameDescription.numberOfLines = 0
+            gameDescription.sizeToFit()
+            gameDescription.lineBreakMode = .byWordWrapping
         }
     }
     @objc private func didTappedBarButtonItem() {
@@ -106,7 +111,7 @@ extension HomeDetailViewController: HomeDetailViewInterface {
     }
     // set subviews
     func setSubviews() {
-        [indicator, gameImage, gradientView, gameLabel, gameHeaderDescription, gameDescription, seperator1stView, visitRedditButton, seperator2stView, visitWebsiteButton, seperator3stView, readMoreButton].forEach { elements in
+        [containerView, indicator, gameImage, gradientView, gameLabel, gameHeaderDescription, gameDescription, seperator1stView, visitRedditButton, seperator2stView, visitWebsiteButton, seperator3stView, readMoreButton].forEach { elements in
             view.addSubview(elements)
         }
     }
@@ -138,34 +143,32 @@ extension HomeDetailViewController: HomeDetailViewInterface {
         
         gameLabel.anchor(top: gameImage.topAnchor, leading: gameImage.leadingAnchor, bottom: gameImage.bottomAnchor, trailing: gameImage.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 10, right: 16), size: .init(width: 343, height: 80))
         
-        gameHeaderDescription.anchor(top: gameLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 9), size: .init(width: 343, height: 21))
+        gameHeaderDescription.anchor(top: gameImage.bottomAnchor, leading: view.leadingAnchor, bottom: gameDescription.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 9), size: .init(width: 343, height: 21))
         gameHeaderDescription.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
         
-      
-        gameDescription.anchor(top: gameHeaderDescription.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16), size: .init(width: 343, height: 21))
-        gameDescription.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 10).isActive = true
+        gameDescription.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 343, height: 21))
         
-        seperator1stView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 200, height: 1))
+        readMoreButton.anchor(top: gameDescription.bottomAnchor, leading: nil, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 120, right: -40), size: .init(width: 100, height: 50))
+
+        containerView.anchor(top: gameImage.bottomAnchor, leading: view.leadingAnchor, bottom: seperator1stView.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16), size: .init(width: view.frame.width, height: 400))
+        
+        seperator1stView.anchor(top: readMoreButton.bottomAnchor, leading: view.leadingAnchor, bottom: visitRedditButton.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 200, height: 1))
         seperator1stView.backgroundColor = .lightGray
         seperator1stView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 95).isActive = true
         
-        visitRedditButton.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 343, height: 22))
+        visitRedditButton.anchor(top: seperator1stView.bottomAnchor, leading: view.leadingAnchor, bottom: seperator2stView.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 343, height: 22))
         visitRedditButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 125).isActive = true
         
-        seperator2stView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 200, height: 1))
+        seperator2stView.anchor(top: visitRedditButton.bottomAnchor, leading: view.leadingAnchor, bottom: visitWebsiteButton.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 200, height: 1))
         seperator2stView.backgroundColor = .lightGray
         seperator2stView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 155).isActive = true
         
-        visitWebsiteButton.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 343, height: 22))
+        visitWebsiteButton.anchor(top: seperator2stView.bottomAnchor, leading: view.leadingAnchor, bottom: seperator3stView.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 343, height: 22))
         visitWebsiteButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 185).isActive = true
         
-        seperator3stView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 200, height: 1))
+        seperator3stView.anchor(top: visitWebsiteButton.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 200, height: 1))
         seperator3stView.backgroundColor = .lightGray
         seperator3stView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 215).isActive = true
-        
-        readMoreButton.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 100, height: 50))
-        readMoreButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 72).isActive = true
-    
     }
     // features characters spacing, line spacing etc.
     func setTextFeatures() {

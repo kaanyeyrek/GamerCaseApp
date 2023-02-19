@@ -32,4 +32,5 @@ public enum Color {
     static let detailColor = "#313131ff"
     static let favoritesColor = "#F8F8F8ff"
     static let navBarFavColor = "#007AFFff"
+    static let homeCellBackground = "#E0E0E0ff"
 }

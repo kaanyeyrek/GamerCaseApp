@@ -196,15 +196,16 @@ extension UILabel {
         self.attributedText = attributedString
     }
 }
-extension UILabel {
-    var optimalHeight: CGFloat {
-        get {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: CGFloat.greatestFiniteMagnitude))
-            label.text = self.text
-            label.font = self.font
-            label.sizeToFit()
-            label.lineBreakMode = .byWordWrapping
-            return label.frame.height
+extension UIViewController {
+    func showAlertWithConfirmation(title: String?, message: String?, confirmationHandler: @escaping () -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            confirmationHandler()
         }
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
+    
 }

@@ -12,7 +12,6 @@
 		CE01D68429A11511000D2BA8 /* Games+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68229A11511000D2BA8 /* Games+CoreDataProperties.swift */; };
 		CE01D68629A14532000D2BA8 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68529A14532000D2BA8 /* FavoritesViewModel.swift */; };
 		CE01D68829A1453A000D2BA8 /* FavoritesContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68729A1453A000D2BA8 /* FavoritesContracts.swift */; };
-		CE01D68A29A14983000D2BA8 /* FavoritesPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68929A14983000D2BA8 /* FavoritesPresentation.swift */; };
 		CE01D68C29A1533C000D2BA8 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68B29A1533C000D2BA8 /* FavoritesTableViewCell.swift */; };
 		CE21428E2996741100E2E46D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21428D2996741100E2E46D /* Extension.swift */; };
 		CE21429129968F6700E2E46D /* GCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21429029968F6700E2E46D /* GCImageView.swift */; };
@@ -78,7 +77,6 @@
 		CE01D68229A11511000D2BA8 /* Games+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Games+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CE01D68529A14532000D2BA8 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		CE01D68729A1453A000D2BA8 /* FavoritesContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesContracts.swift; sourceTree = "<group>"; };
-		CE01D68929A14983000D2BA8 /* FavoritesPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresentation.swift; sourceTree = "<group>"; };
 		CE01D68B29A1533C000D2BA8 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		CE21428D2996741100E2E46D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CE21429029968F6700E2E46D /* GCImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCImageView.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 				CE7C3A8E2995697100B9CEF3 /* FavoritesViewController.swift */,
 				CE01D68529A14532000D2BA8 /* FavoritesViewModel.swift */,
 				CE01D68729A1453A000D2BA8 /* FavoritesContracts.swift */,
-				CE01D68929A14983000D2BA8 /* FavoritesPresentation.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -557,7 +554,6 @@
 				CE5AA95E299584E200EFB4FA /* HomeContracts.swift in Sources */,
 				CE5AA95C299584CD00EFB4FA /* HomeViewModel.swift in Sources */,
 				CE5AA960299584FB00EFB4FA /* HomePresentation.swift in Sources */,
-				CE01D68A29A14983000D2BA8 /* FavoritesPresentation.swift in Sources */,
 				CE01D68329A11511000D2BA8 /* Games+CoreDataClass.swift in Sources */,
 				CE01D68C29A1533C000D2BA8 /* FavoritesTableViewCell.swift in Sources */,
 				CE7C3A8F2995697100B9CEF3 /* FavoritesViewController.swift in Sources */,

@@ -14,15 +14,21 @@ protocol CoreDataManagerInterface {
     func delete(model: GameResult)
     func deleteAll()
     func getItemCount() -> Int
+    func deleteFavorites(model: Games)
+    func simplySave()
 }
 //MARK: - CoreDataManagerInterface Methods
 @available(iOS 13.0, *)
 final class CoreDataManager: CoreDataManagerInterface {
     //MARK: - Components
-        private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
+    func deleteFavorites(model: Games) {
+        context?.delete(model)
+        try? context?.save()
+       }
     func save(model: GameResult) {
-        let games = Games(context: context)
+        let games = Games(context: context!)
         games.name = model.name
         games.image = model.background_image
         let genresArray = model.genres.map {$0.name}
@@ -30,7 +36,7 @@ final class CoreDataManager: CoreDataManagerInterface {
         games.metacritic = Int32(model.metacritic!)
         games.id = String(model.id)
         do {
-            try context.save()
+            try context?.save()
         } catch {
             print("failed")
         }
@@ -38,7 +44,7 @@ final class CoreDataManager: CoreDataManagerInterface {
     func fetch() -> [Games] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Games")
         do {
-            let fetchedGames = try context.fetch(request) as! [Games]
+            let fetchedGames = try context?.fetch(request) as! [Games]
             return fetchedGames.reversed()
         } catch {
             return []
@@ -52,9 +58,9 @@ final class CoreDataManager: CoreDataManagerInterface {
                 newsDelete = savedNew
             }
         }
-        context.delete(newsDelete)
+        context?.delete(newsDelete)
         do {
-            try context.save()
+            try context?.save()
         } catch {
             print(error.localizedDescription)
     }
@@ -62,10 +68,10 @@ final class CoreDataManager: CoreDataManagerInterface {
     func deleteAll() {
         let savedGames = fetch()
         for savedGame in savedGames {
-            context.delete(savedGame)
+            context?.delete(savedGame)
         }
         do {
-            try context.save()
+            try context?.save()
         } catch {
             print(error.localizedDescription)
         }
@@ -73,7 +79,14 @@ final class CoreDataManager: CoreDataManagerInterface {
     func getItemCount() -> Int {
             let context = self.context
             let request: NSFetchRequest<Games> = Games.fetchRequest()
-            let count = try? context.count(for: request)
+        let count = try? context?.count(for: request)
             return count ?? 0
         }
+    func simplySave() {
+        do {
+            try context?.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

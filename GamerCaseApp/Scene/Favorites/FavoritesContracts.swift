@@ -10,5 +10,4 @@ import Foundation
 enum FavoriteOutput {
     case showEmptyView(message: String)
     case removeEmptyView
-    case uploadPresentation(presentation: [FavoritesPresentation])
 }
