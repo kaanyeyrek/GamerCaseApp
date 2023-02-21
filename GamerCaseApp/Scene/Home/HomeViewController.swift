@@ -18,6 +18,7 @@ protocol HomeViewInterface: AnyObject {
     func changeLoading(isLoad: Bool)
     func handleOutput(output: HomeViewModelOutput)
     func navigate(route: HomeViewModelRoute)
+    func setKey()
 }
 
 @available(iOS 13.0, *)
@@ -39,6 +40,8 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
+        viewModel.saveApiKey()
+      
     }
 }
 //MARK: - HomeViewInterface Methods
@@ -46,6 +49,9 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewInterface {
     func setUI() {
         view.backgroundColor = UIColor(hex: Color.white)
+    }
+    func setKey() {
+        
     }
     func setNavBarTitleFeatures() {
         navigationItem.largeTitleDisplayMode = .always

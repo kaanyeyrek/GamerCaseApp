@@ -16,13 +16,15 @@ protocol HomeViewModelInterface {
     func pagination(height: CGFloat, offset: CGFloat, contentHeight: CGFloat)
     func newSearch()
     func didSelectRowAt(at index: Int)
+    func saveApiKey()
+    func loadApiKey() -> String?
 }
 
 final class HomeViewModel {
 //MARK: - Global Inject
     private weak var view: HomeViewInterface?
     private var service: GameServiceInterface
-    private var model: [GameResult] = []
+    var model: [GameResult] = []
     private var filteredModel: [GameResult] = []
 //MARK: - Global ViewModel Elements
     private var pageSize: Int = 10
@@ -30,12 +32,26 @@ final class HomeViewModel {
     private var isLoad: Bool = false
     private var moreGames: Bool = true
     private var userQuery: String = ""
+    private let apiManager = APIManager()
+
     
     // Inject interface and game service
     init(view: HomeViewInterface, service: GameServiceInterface = GameService(manager: CoreService())) {
         self.view = view
         self.service = service
     }
+    // xcconfig build info and keychain security saved
+    func saveApiKey() {
+        let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String
+           guard let key = apiKey, !key.isEmpty else {
+               print("API key does not exist")
+               return
+           }
+           _ = apiManager.saveApiKey(apiKey: apiKey!)
+        }
+    func loadApiKey() -> String? {
+            return apiManager.loadApiKey()
+        }
 }
 //MARK: - HomeViewModelInterface Methods
 @available(iOS 13.0, *)
@@ -44,6 +60,7 @@ extension HomeViewModel: HomeViewModelInterface {
     private func notify(output: HomeViewModelOutput) {
         view?.handleOutput(output: output)
     }
+    
     func changeLoadingStatus() {
         isLoad = !isLoad
         view?.changeLoading(isLoad: isLoad)
@@ -54,6 +71,7 @@ extension HomeViewModel: HomeViewModelInterface {
     }
     func viewDidLoad() {
         view?.setUI()
+        view?.setKey()
         view?.setTableView()
         view?.setNavBarTitleFeatures()
         view?.setSearchController()

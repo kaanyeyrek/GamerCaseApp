@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct GameModel: Decodable {
+struct GameModel: Codable {
     let results: [GameResult]
 }
-struct GameResult: Decodable, Equatable {
+struct GameResult: Codable, Equatable {
     let id: Int
     let name: String
     let background_image: String
     let metacritic: Int?
     let genres: [Genre]
 }
-struct Genre: Decodable, Equatable {
+struct Genre: Codable, Equatable {
     let id: Int
     let name: String
 }

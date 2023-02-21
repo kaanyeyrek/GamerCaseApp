@@ -15,7 +15,7 @@ protocol GameServiceInterface {
 // Game Service Request
 final class GameService: GameServiceInterface {
     private var manager: CoreServiceProtocol!
-    // Inject
+    // Dependency inject
     init(manager: CoreServiceProtocol!) {
         self.manager = manager
     }

@@ -13,12 +13,16 @@
 		CE01D68629A14532000D2BA8 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68529A14532000D2BA8 /* FavoritesViewModel.swift */; };
 		CE01D68829A1453A000D2BA8 /* FavoritesContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68729A1453A000D2BA8 /* FavoritesContracts.swift */; };
 		CE01D68C29A1533C000D2BA8 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01D68B29A1533C000D2BA8 /* FavoritesTableViewCell.swift */; };
+		CE03229A29A51FB100774AED /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03229929A51FB100774AED /* KeychainManager.swift */; };
 		CE21428E2996741100E2E46D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21428D2996741100E2E46D /* Extension.swift */; };
 		CE21429129968F6700E2E46D /* GCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21429029968F6700E2E46D /* GCImageView.swift */; };
 		CE21429429968FF600E2E46D /* GCLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21429329968FF600E2E46D /* GCLabel.swift */; };
 		CE2142972996934000E2E46D /* GCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2142962996934000E2E46D /* GCView.swift */; };
 		CE21429A2996961D00E2E46D /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2142992996961D00E2E46D /* HomeTableViewCell.swift */; };
 		CE21429D2996A9EC00E2E46D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CE21429C2996A9EC00E2E46D /* SDWebImage */; };
+		CE26EDB029A3DD8C0009DAD1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CE26EDAF29A3DD8C0009DAD1 /* SDWebImage */; };
+		CE26EDB229A3DE800009DAD1 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26EDB129A3DE800009DAD1 /* MockViewController.swift */; };
+		CE26EDB429A3FEFC0009DAD1 /* MockGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26EDB329A3FEFC0009DAD1 /* MockGameService.swift */; };
 		CE533EBE2996E93D002350A1 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE533EBD2996E93D002350A1 /* SFProText-Regular.ttf */; };
 		CE533EC22996EA44002350A1 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE533EC12996EA44002350A1 /* SFProDisplay-Bold.ttf */; };
 		CE5AA9582995766A00EFB4FA /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA9572995766A00EFB4FA /* GameService.swift */; };
@@ -78,11 +82,15 @@
 		CE01D68529A14532000D2BA8 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		CE01D68729A1453A000D2BA8 /* FavoritesContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesContracts.swift; sourceTree = "<group>"; };
 		CE01D68B29A1533C000D2BA8 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		CE03229929A51FB100774AED /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		CE03229E29A535AC00774AED /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		CE21428D2996741100E2E46D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CE21429029968F6700E2E46D /* GCImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCImageView.swift; sourceTree = "<group>"; };
 		CE21429329968FF600E2E46D /* GCLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCLabel.swift; sourceTree = "<group>"; };
 		CE2142962996934000E2E46D /* GCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCView.swift; sourceTree = "<group>"; };
 		CE2142992996961D00E2E46D /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		CE26EDB129A3DE800009DAD1 /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
+		CE26EDB329A3FEFC0009DAD1 /* MockGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameService.swift; sourceTree = "<group>"; };
 		CE533EBD2996E93D002350A1 /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
 		CE533EC12996EA44002350A1 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		CE5AA9572995766A00EFB4FA /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
@@ -135,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE26EDB029A3DD8C0009DAD1 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +157,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE03229829A51F9900774AED /* KeyChainManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE03229929A51FB100774AED /* KeychainManager.swift */,
+			);
+			path = KeyChainManager;
+			sourceTree = "<group>";
+		};
 		CE21428F2996829B00E2E46D /* GCImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +196,13 @@
 				CE01D68B29A1533C000D2BA8 /* FavoritesTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		CE26EDAE29A3DD8C0009DAD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CE533EB62996D710002350A1 /* Font */ = {
@@ -240,10 +264,12 @@
 		CEB2AD3029954DEF008F4E83 = {
 			isa = PBXGroup;
 			children = (
+				CE03229E29A535AC00774AED /* Secrets.xcconfig */,
 				CEB2AD3B29954DEF008F4E83 /* GamerCaseApp */,
 				CEB2AD5529954DF0008F4E83 /* GamerCaseAppTests */,
 				CEB2AD5F29954DF0008F4E83 /* GamerCaseAppUITests */,
 				CEB2AD3A29954DEF008F4E83 /* Products */,
+				CE26EDAE29A3DD8C0009DAD1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +286,7 @@
 		CEB2AD3B29954DEF008F4E83 /* GamerCaseApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE03229829A51F9900774AED /* KeyChainManager */,
 				CEB2AD7629954F05008F4E83 /* CoreDataManager */,
 				CEB2AD7329954EDD008F4E83 /* Network */,
 				CEB2AD7529954EE9008F4E83 /* Model */,
@@ -278,6 +305,8 @@
 			isa = PBXGroup;
 			children = (
 				CEB2AD5629954DF0008F4E83 /* GamerCaseAppTests.swift */,
+				CE26EDB129A3DE800009DAD1 /* MockViewController.swift */,
+				CE26EDB329A3FEFC0009DAD1 /* MockGameService.swift */,
 			);
 			path = GamerCaseAppTests;
 			sourceTree = "<group>";
@@ -363,8 +392,8 @@
 		CEB2AD7629954F05008F4E83 /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				CE01D67129A10B09000D2BA8 /* CoreDataManager.swift */,
 				CEB2AD4529954DEF008F4E83 /* GamerCaseApp.xcdatamodeld */,
+				CE01D67129A10B09000D2BA8 /* CoreDataManager.swift */,
 				CE01D68229A11511000D2BA8 /* Games+CoreDataProperties.swift */,
 				CE01D68129A11511000D2BA8 /* Games+CoreDataClass.swift */,
 			);
@@ -447,6 +476,9 @@
 				CEB2AD5429954DF0008F4E83 /* PBXTargetDependency */,
 			);
 			name = GamerCaseAppTests;
+			packageProductDependencies = (
+				CE26EDAF29A3DD8C0009DAD1 /* SDWebImage */,
+			);
 			productName = GamerCaseAppTests;
 			productReference = CEB2AD5229954DF0008F4E83 /* GamerCaseAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -560,6 +592,7 @@
 				CE7C3A892995674600B9CEF3 /* GameEndpoint.swift in Sources */,
 				CE7C3A82299560BA00B9CEF3 /* NetworkHelper.swift in Sources */,
 				CEB2AD4129954DEF008F4E83 /* HomeViewController.swift in Sources */,
+				CE03229A29A51FB100774AED /* KeychainManager.swift in Sources */,
 				CE7C3A862995618400B9CEF3 /* CoreService.swift in Sources */,
 				CE21429129968F6700E2E46D /* GCImageView.swift in Sources */,
 				CE01D67229A10B09000D2BA8 /* CoreDataManager.swift in Sources */,
@@ -592,6 +625,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE26EDB229A3DE800009DAD1 /* MockViewController.swift in Sources */,
+				CE26EDB429A3FEFC0009DAD1 /* MockGameService.swift in Sources */,
 				CEB2AD5729954DF0008F4E83 /* GamerCaseAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,6 +669,7 @@
 /* Begin XCBuildConfiguration section */
 		CEB2AD6429954DF0008F4E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE03229E29A535AC00774AED /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -694,6 +730,7 @@
 		};
 		CEB2AD6529954DF0008F4E83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE03229E29A535AC00774AED /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -749,6 +786,7 @@
 		CEB2AD6729954DF0008F4E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = "${API_KEY}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -759,8 +797,8 @@
 				INFOPLIST_FILE = GamerCaseApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -778,6 +816,7 @@
 		CEB2AD6829954DF0008F4E83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = "${API_KEY}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -788,8 +827,8 @@
 				INFOPLIST_FILE = GamerCaseApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -935,6 +974,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		CE21429C2996A9EC00E2E46D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE21429B2996A9EC00E2E46D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		CE26EDAF29A3DD8C0009DAD1 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE21429B2996A9EC00E2E46D /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;

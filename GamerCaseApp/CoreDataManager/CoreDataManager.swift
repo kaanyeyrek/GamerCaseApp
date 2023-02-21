@@ -79,7 +79,7 @@ final class CoreDataManager: CoreDataManagerInterface {
     func getItemCount() -> Int {
             let context = self.context
             let request: NSFetchRequest<Games> = Games.fetchRequest()
-        let count = try? context?.count(for: request)
+            let count = try? context?.count(for: request)
             return count ?? 0
         }
     func simplySave() {
